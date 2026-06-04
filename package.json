@@ -30,8 +30,10 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@langchain/anthropic": "^1.4.0",
     "@langchain/core": "^1.1.48",
     "deepagents": "^1.10.2",
+    "dotenv": "^17.4.2",
     "langchain": "^1.4.4"
   }
 }
