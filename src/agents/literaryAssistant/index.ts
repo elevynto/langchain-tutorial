@@ -29,13 +29,29 @@ export async function literaryAssistant() {
     2) What's should the title of the document be?
     3) Give me a ~50 word summary of the document.`;
 
+  const sharedTags = ["literary-assistant", "sourceforge-sample"];
+  const sharedMetadata = {
+    feature: "literaryAssistant",
+    source_url: "https://txt2html.sourceforge.net/sample.txt",
+  };
+
   const agentResult = await agent.invoke(
     { messages: [{ role: "user", content }] },
-    { configurable: { thread_id: "sourceforge-sample-lc" } },
+    {
+      configurable: { thread_id: "sourceforge-sample-lc" },
+      runName: "literaryAssistant.createAgent",
+      tags: [...sharedTags, "create-agent"],
+      metadata: { ...sharedMetadata, agent_type: "createAgent" },
+    },
   );
   const deepAgentResult = await deepAgent.invoke(
     { messages: [{ role: "user", content }] },
-    { configurable: { thread_id: "sourceforge-sample-da" } },
+    {
+      configurable: { thread_id: "sourceforge-sample-da" },
+      runName: "literaryAssistant.createDeepAgent",
+      tags: [...sharedTags, "deep-agent"],
+      metadata: { ...sharedMetadata, agent_type: "createDeepAgent" },
+    },
   );
 
   const agentMessages = agentResult.messages;
