@@ -11,7 +11,7 @@ export async function literaryAssistant() {
     tools: [fetchTextFromUrl],
     systemPrompt: SYSTEM_PROMPT,
     checkpointer,
-  });
+  })
 
   const deepAgent = createDeepAgent({
     model,
